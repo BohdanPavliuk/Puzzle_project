@@ -1,4 +1,5 @@
-"Project puzzle"
+'''Project puzzle
+https://github.com/Vspotiv/Puzzle_project'''
 
 def main_check(lst):
     """Check each row if there any mutual numbers
