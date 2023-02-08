@@ -68,7 +68,8 @@ def valid_solution(board):
     """
     for number,element in enumerate(board):
         board[number]=[*element]
-    return main_check(board) and main_check(column_check(board)) and main_check(colors(board))
+    return main_check(board) and main_check(column_check(board)) and main_check(colors(board)) \
+    and check_white(board)
 
 
 def colors(board):
@@ -115,6 +116,34 @@ def colors(board):
         res[i] = swit[i][k:k+5]+board[k-5][i+1:i+5]
         k-=1
     return res
+
+def check_white(board):
+    """ Function check all white spaces in board and return True? \
+    if all white spaces on their places
+    >>> check_white([['*', '*', '*', '*', ' ', '*', '*', '*', '*'], \
+     ['*', '*', '*', '1', ' ', '*', '*', '*', '*'], \
+     ['*', '*', '3', ' ', '3', '*', '*', '*', '*'], \
+     ['*', ' ', '4', ' ', '1', '*', '*', '*', '*'], \
+     [' ', ' ', ' ', ' ', ' ', '9', ' ', '5', ' '], \
+     [' ', '6', ' ', ' ', '8', '3', ' ', ' ', '*'], \
+     ['3', ' ', ' ', ' ', '1', ' ', ' ', '*', '*'], \
+     [' ', ' ', '8', ' ', ' ', '2', '*', '*', '*'], \
+     [' ', ' ', '2', ' ', ' ', '*', '*', '*', '*']])
+    True
+    >>> check_white([['1', '*', '*', '*', ' ', '*', '*', '*', '*'], \
+     ['*', '*', '*', '1', ' ', '*', '*', '*', '*'], \
+     ['*', '*', '3', ' ', '3', '*', '*', '*', '*'], \
+     ['*', ' ', '4', ' ', '1', '*', '*', '*', '*'], \
+     [' ', ' ', ' ', ' ', ' ', '9', ' ', '5', ' '], \
+     [' ', '6', ' ', ' ', '8', '3', ' ', ' ', '*'], \
+     ['3', ' ', ' ', ' ', '1', ' ', ' ', '*', '*'], \
+     [' ', ' ', '8', ' ', ' ', '2', '*', '*', '*'], \
+     [' ', ' ', '2', ' ', ' ', '*', '*', '*', '*']])
+    False"""
+    return set(board[0][0:4] + board[0][5:9] + board[1][0:3] + board[1][5:9] + board[2][0:2] + \
+board[2][5:9] + [board[3][0]] + board[3][5:9] + [board[5][8]] + board[6][7:9] + board[7][6:9] +\
+board[8][5:9]) == {'*'}
+
 
 if __name__=="__main__":
     import doctest
