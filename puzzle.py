@@ -65,6 +65,9 @@ def valid_solution(board):
     >>> valid_solution(["**** ****","***1 ****","**  3****","* 4  ****",\
     "     9 5 "," 6  8   *","3   1  **","  8  2***","  2  ****"])
     True
+    >>> valid_solution(["1*** ****","***1 ****","**  3****","* 4  ****",\
+    "     9 5 "," 6  8   *","3   1  **","  8  2***","  2  ****"])
+    False
     """
     for number,element in enumerate(board):
         board[number]=[*element]
